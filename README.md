@@ -72,6 +72,16 @@ ____________________________________
 
 
 ____________________________________
+## Usage
+```
+library(pairwiseAdonis)
+data(iris)
+pairwise.adonis(iris[,1:4],iris$Species)
+```
+
+for more examples see also
+```?pairwise.adonis()```
+_____________________________________________
 ## Citation
 
 Martinez Arbizu, P. (2017). pairwiseAdonis: Pairwise multilevel comparison using adonis. R package version 0.0.1.
