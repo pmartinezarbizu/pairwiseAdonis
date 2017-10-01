@@ -72,4 +72,4 @@ ____________________________________
 ____________________________________
 # Citation
 
-Pedro Martinez Arbizu (2017). pairwiseAdonis: Pairwise multilevel comparison using adonis. R package version 0.0.1.
+Martinez Arbizu, P. (2017). pairwiseAdonis: Pairwise multilevel comparison using adonis. R package version 0.0.1.
