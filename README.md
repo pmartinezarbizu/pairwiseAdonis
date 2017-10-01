@@ -5,71 +5,73 @@ Use this R function for multilevel pairwise comparison using adonis (~Permanova)
 
 _________________________________________________________________________________________________
 
-# Download
+## Download
 
 My recommendation is to download the source file pairwiseAdonis_0.0.1.tar.gz
 
 You can also download the folder pairwiseAdonis and build from scratch if you experience problems with R versions
 
-# INSTALLATION
+## INSTALLATION
 
-## For windows
+### For windows
 first install Rtools from here https://cran.r-project.org/bin/windows/Rtools/
 
 in R install devtools
 
 ```install.packages('devtools')```
 
-#load devtools
+load devtools
 
-library(devtools)
+```library(devtools)```
 
-#change to directory where you saved the pairwiseAdonis file, eg here in my Documents folder
+change to directory where you saved the pairwiseAdonis file, eg here in my Documents folder
 
-setwd("C:/Users/pmartinez/Documents")
+```setwd("C:/Users/pmartinez/Documents")```
 
-#install source
+install source
 
-install.packages('pairwiseAdonis_0.0.1.tar.gz', repos = NULL, type="source")
+```install.packages('pairwiseAdonis_0.0.1.tar.gz', repos = NULL, type="source")```
 
-#If this doesnt work:
+If this doesnt work:
 
-#open terminal <- type CMD in the start menu
+open terminal <- type ```CMD``` in the start menu
 
-#change to directory where you saved the file
+change to directory where you saved the file
 
-cd C:\Users\pmartinez\Documents
+```cd C:\Users\pmartinez\Documents```
 
-#type:
+type:
 
-R CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
+```R CMD INSTALL pairwiseAdonis_0.0.1.tar.gz```
 
-#Note that this will install it in the default repository of the default R version
+Note that this will install it in the default repository of the default R version
 
-#If you have different R versions installed you can specificy the version by
+If you have different R versions installed you can specificy the version by
 
-#specifiying the full path to R.exe to be used, like:
+specifiying the full path to R.exe to be used, like:
 
-"C:\Program Files\R\R-3.3.1\bin\R.exe" CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
+```"C:\Program Files\R\R-3.3.1\bin\R.exe" CMD INSTALL pairwiseAdonis_0.0.1.tar.gz```
 
 _________________
-#Bulding from source, make sure you have Rtools installed
+#### Bulding from source
+make sure you have Rtools installed
 
-#in the terminal CMD change to the folder containing the folder pairwiseAdonis
+in the terminal CMD change to the folder containing the folder pairwiseAdonis
 
+```
 cd C:\Users\pmartinez\Documents
 
 R CMD build pairwiseAdonis
 
 R CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
+```
+
+____________________________________
+### For linux
+...you know what to do :smilie:
 
 
 ____________________________________
-# For linux
-#you know what to do :-)
-
-
-____________________________________
-# Citation
+## Citation
 
 Martinez Arbizu, P. (2017). pairwiseAdonis: Pairwise multilevel comparison using adonis. R package version 0.0.1.
