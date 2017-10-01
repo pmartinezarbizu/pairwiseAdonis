@@ -4,6 +4,13 @@ Use this R function for multilevel pairwise comparison using adonis (~Permanova)
 			The function returns adjusted p-values using p.adjust().
 
 _________________________________________________________________________________________________
+
+# Download
+
+my recommendation is to download the source file pairwiseAdonis_0.0.1.tar.gz
+
+you can download the folder pairwiseAdonis and build from scrath if you experience problems with R versions
+
 # INSTALLATION
 
 # For windows
@@ -45,6 +52,19 @@ R CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
 
 "C:\Program Files\R\R-3.3.1\bin\R.exe" CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
 
+_________________
+#Bulding from source, make sure you have Rtools installed
+
+#in the terminal CMD change to the folder containing the folder pairwiseAdonis
+
+cd C:\Users\pmartinez\Documents
+
+R CMD built pairwiseAdonis
+
+R CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
+
+
+____________________________________
 # For linux
 #you know what to do :-)
 
