@@ -48,7 +48,7 @@ Note that this will install it in the default repository of the default R versio
 
 If you have different R versions installed you can specificy the version by
 
-specifiying the full path to R.exe to be used, like:
+writing the full path to ```R.exe``` of the version to be used, like:
 
 ```"C:\Program Files\R\R-3.3.1\bin\R.exe" CMD INSTALL pairwiseAdonis_0.0.1.tar.gz```
 
@@ -56,7 +56,7 @@ _________________
 #### Bulding from source
 make sure you have Rtools installed
 
-in the terminal CMD change to the folder containing the folder pairwiseAdonis
+in the terminal ```CMD``` change to the folder containing the folder pairwiseAdonis
 
 ```
 cd C:\Users\pmartinez\Documents
@@ -68,7 +68,7 @@ R CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
 
 ____________________________________
 ### For linux
-...you know what to do :smilie:
+...you know what to do :wink:
 
 
 ____________________________________
