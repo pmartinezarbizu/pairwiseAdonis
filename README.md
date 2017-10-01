@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 My recommendation is to download the source file pairwiseAdonis_0.0.1.tar.gz
 
-You can also download the folder pairwiseAdonis and build from scrath if you experience problems with R versions
+You can also download the folder pairwiseAdonis and build from scratch if you experience problems with R versions
 
 # INSTALLATION
 
