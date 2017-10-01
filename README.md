@@ -13,12 +13,12 @@ You can also download the folder pairwiseAdonis and build from scratch if you ex
 
 # INSTALLATION
 
-# For windows
-#first install Rtools from here https://cran.r-project.org/bin/windows/Rtools/
+## For windows
+first install Rtools from here https://cran.r-project.org/bin/windows/Rtools/
 
-#in R install devtools
+in R install devtools
 
-install.packages('devtools')
+```install.packages('devtools')```
 
 #load devtools
 
