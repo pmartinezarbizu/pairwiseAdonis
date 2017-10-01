@@ -7,9 +7,9 @@ ________________________________________________________________________________
 
 # Download
 
-my recommendation is to download the source file pairwiseAdonis_0.0.1.tar.gz
+My recommendation is to download the source file pairwiseAdonis_0.0.1.tar.gz
 
-you can download the folder pairwiseAdonis and build from scrath if you experience problems with R versions
+You can also download the folder pairwiseAdonis and build from scrath if you experience problems with R versions
 
 # INSTALLATION
 
@@ -59,7 +59,7 @@ _________________
 
 cd C:\Users\pmartinez\Documents
 
-R CMD built pairwiseAdonis
+R CMD build pairwiseAdonis
 
 R CMD INSTALL pairwiseAdonis_0.0.1.tar.gz
 
