@@ -1,5 +1,5 @@
 # pairwiseAdonis
-Pairwise multilevel comparison using adonis
+Pairwise multilevel comparison using adonis. 
 Use this R function for multilevel pairwise comparison using adonis (~Permanova) from package 'vegan'.
 			The function returns adjusted p-values using p.adjust().
 
@@ -68,3 +68,8 @@ ____________________________________
 # For linux
 #you know what to do :-)
 
+
+____________________________________
+# Citation
+
+Pedro Martinez Arbizu (2017). pairwiseAdonis: Pairwise multilevel comparison using adonis. R package version 0.0.1.
