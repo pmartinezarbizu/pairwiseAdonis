@@ -6,11 +6,20 @@ ________________________________________________________________________________
 
 ## Download
 
-My recommendation is to download the source file pairwiseAdonis_0.0.1.tar.gz
+My recommendation is to install directly from github 
 
 You can also download the folder pairwiseAdonis and build from scratch if you experience problems with R versions
 
 ## INSTALLATION
+make sure you have ```devtools``` installed and loaded, for windows also install ```Rtools```
+
+In your R session
+
+```install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")``
+
+That's it
+
+If you need to install from source:
 
 ### For windows
 first install Rtools from here https://cran.r-project.org/bin/windows/Rtools/
@@ -22,6 +31,8 @@ in R install devtools
 load devtools
 
 ```library(devtools)```
+
+download the source file pairwiseAdonis_0.0.1.tar.gz
 
 change to directory where you saved the pairwiseAdonis file, eg here in my Documents folder
 
