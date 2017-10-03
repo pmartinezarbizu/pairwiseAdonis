@@ -15,11 +15,11 @@ make sure you have ```devtools``` installed and loaded, for windows also install
 
 In your R session
 
-```install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")``
+```install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")```
 
 That's it
 
-If you need to install from source:
+Or...
 
 ### For windows
 first install Rtools from here https://cran.r-project.org/bin/windows/Rtools/
