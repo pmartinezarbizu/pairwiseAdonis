@@ -5,7 +5,7 @@
 \title{Pairwise multilevel comparison using adonis}
 \usage{
 pairwise.adonis(x, factors, sim.function = "vegdist", sim.method = "bray",
-  p.adjust.m = "bonferroni")
+  p.adjust.m = "bonferroni", reduce = NULL)
 }
 \arguments{
 \item{x}{Data frame (the community table).}
@@ -19,6 +19,8 @@ one of 'daisy' or 'vegdist' default is 'vegdist'.}
 
 \item{p.adjust.m}{The p.value correction method, one of the methods supported by p.adjust(),
 default is 'bonferroni'.}
+
+\item{reduce}{String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like:  reduce = 'setosa|versicolor'}
 }
 \value{
 Table with the pairwise factors, F-values, R^2, p.value and adjusted p.value.
@@ -30,6 +32,8 @@ using adonis() from package 'vegan'. The function returns adjusted p-values usin
 \examples{
 data(iris)
 pairwise.adonis(iris[,1:4],iris$Species)
+
+pairwise.adonis(iris[,1:4],iris$Species,reduce = 'setosa')
 
 #similarity euclidean from vegdist and holm correction
 pairwise.adonis(x=iris[,1:4],factors=iris$Species,sim.function='vegdist',
