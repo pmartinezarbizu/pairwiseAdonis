@@ -17,7 +17,7 @@
 #'
 #'@param reduce String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like:  reduce = 'setosa|versicolor'
 #'
-#'@return Table with the pairwise factors, F-values, R^2, p.value and adjusted p.value.
+#'@return Table with the pairwise factors, total Degrees of Freedom, F-values, R^2, p.value and adjusted p.value.
 #'
 #'@author Pedro Martinez Arbizu
 #'
@@ -47,6 +47,7 @@ pairwise.adonis <- function(x, factors, sim.function = "vegdist", sim.method = "
     
     co <- combn(unique(as.character(factors)), 2)
     pairs <- c()
+    total.DF <- c()
     F.Model <- c()
     R2 <- c()
     p.value <- c()
@@ -62,6 +63,7 @@ pairwise.adonis <- function(x, factors, sim.function = "vegdist", sim.method = "
         
         ad <- adonis(x1 ~ factors[factors %in% c(co[1, elem], co[2, elem])])
         pairs <- c(pairs, paste(co[1, elem], "vs", co[2, elem]))
+        total.DF <- c(total.DF, ad$aov.tab['Total',1])
         F.Model <- c(F.Model, ad$aov.tab[1, 4])
         R2 <- c(R2, ad$aov.tab[1, 5])
         p.value <- c(p.value, ad$aov.tab[1, 6])
@@ -73,7 +75,7 @@ pairwise.adonis <- function(x, factors, sim.function = "vegdist", sim.method = "
     sig[p.adjusted <= 0.01] <- "*"
     sig[p.adjusted <= 0.001] <- "**"
     sig[p.adjusted <= 1e-04] <- "***"
-    pairw.res <- data.frame(pairs, F.Model, R2, p.value, p.adjusted, sig)
+    pairw.res <- data.frame(pairs, total.DF, F.Model, R2, p.value, p.adjusted, sig)
     
     if (!is.null(reduce)) {
         pairw.res <- subset(pairw.res, grepl(reduce, pairs))
