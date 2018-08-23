@@ -50,6 +50,20 @@ p.adjust.m='holm')
 pairwise.adonis(x=iris[,1:4],factors=iris$Species,sim.function='daisy',
 sim.method='manhattan',p.adjust.m='bonferroni')
 
+#Restrict comparison to only some factors
+pairwise.adonis(iris[,1:4],iris$Species, reduce='setosa')
+
+#for more than one factor separate by pipes
+pairwise.adonis(iris[,1:4],iris$Species, reduce='setosa|versicolor')
+
+Strata are not suported as argument, but you can merge the column with factor to the column with strata and select the desidered strata with 'reduce'
+#create strata
+strata <- rep(c('summer','winter'),75)
+pairwise.adonis(iris[,1:4],paste(iris$Species,strata),reduce='summer')
+
+#if you only want comparison within one stratum you need to reduce your matrix like this
+pairwise.adonis(iris[strata=='summer',1:4],iris$Species[strata=='summer'])
+
 }
 \author{
 Pedro Martinez Arbizu & Sylvain Monteux
