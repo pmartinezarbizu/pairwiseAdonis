@@ -47,7 +47,7 @@
 #'#for more than one factor separate by pipes
 #'pairwise.adonis(iris[,1:4],iris$Species, reduce='setosa|versicolor')
 #' 
-#'Strata are not suported as argument, but you can merge the column with factor to the column with strata and select the desidered strata with 'reduce'
+#'#Strata are not suported as argument, but you can merge the column with factor to the column with strata and select the desidered strata with 'reduce'
 #'#create strata
 #'strata <- rep(c('summer','winter'),75)
 #'pairwise.adonis(iris[,1:4],paste(iris$Species,strata),reduce='summer')
