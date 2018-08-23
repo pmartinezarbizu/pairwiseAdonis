@@ -4,23 +4,26 @@
 \alias{pairwise.adonis}
 \title{Pairwise multilevel comparison using adonis}
 \usage{
-pairwise.adonis(x, factors, sim.function = "vegdist", sim.method = "bray",
-  p.adjust.m = "bonferroni", reduce = NULL)
+pairwise.adonis(x, factors, stratum = NULL, sim.function = "vegdist",
+  sim.method = "bray", p.adjust.m = "bonferroni", reduce = NULL,
+  perm = 999)
 }
 \arguments{
-\item{x}{Data frame (the community table).}
+\item{x}{Data frame (the community table), or "dist" object (user-supplied distance matrix).}
 
 \item{factors}{Vector (a column or vector with the levels to be compared pairwise).}
 
-\item{sim.function}{Function used to calculate the similarity matrix,
-one of 'daisy' or 'vegdist' default is 'vegdist'.}
+\item{stratum}{Vector (groups (strata) within which to constrain permutations in adonis() ).}
 
-\item{sim.method}{Similarity method from daisy or vegdist, default is 'bray'.}
+\item{sim.function}{Function used to calculate the similarity matrix,
+one of 'daisy' or 'vegdist' default is 'vegdist'. Ignored if x is a distance matrix.}
+
+\item{sim.method}{Similarity method from daisy or vegdist, default is 'bray'. Ignored if x is a distance matrix.}
 
 \item{p.adjust.m}{The p.value correction method, one of the methods supported by p.adjust(),
 default is 'bonferroni'.}
 
-\item{reduce}{String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like:  reduce = 'setosa|versicolor'}
+\item{reduce}{String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like  reduce = 'setosa|versicolor'}
 }
 \value{
 Table with the pairwise factors, F-values, R^2, p.value and adjusted p.value.
@@ -33,16 +36,21 @@ using adonis() from package 'vegan'. The function returns adjusted p-values usin
 data(iris)
 pairwise.adonis(iris[,1:4],iris$Species)
 
-pairwise.adonis(iris[,1:4],iris$Species,reduce = 'setosa')
 
 #similarity euclidean from vegdist and holm correction
 pairwise.adonis(x=iris[,1:4],factors=iris$Species,sim.function='vegdist',
 sim.method='euclidian',p.adjust.m='holm')
 
+#identical example using a distance matrix as an input
+dist_matrix=vegdist(iris[,1:4],method="euclidean")
+pairwise.adonis(dist_matrix,factors=iris$Species,
+p.adjust.m='holm')
+
 #similarity manhattan from daisy and bonferroni correction
 pairwise.adonis(x=iris[,1:4],factors=iris$Species,sim.function='daisy',
 sim.method='manhattan',p.adjust.m='bonferroni')
+
 }
 \author{
-Pedro Martinez Arbizu
+Pedro Martinez Arbizu & Sylvain Monteux
 }
