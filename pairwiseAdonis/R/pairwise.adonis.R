@@ -74,7 +74,7 @@ pairwise.adonis <- function(x,factors,stratum = NULL, sim.function = 'vegdist', 
   
   
   for(elem in 1:ncol(co)){
-    if(class(x)=='dist'){
+    if(inherits(x, 'dist')){
       x1=as.matrix(x)[factors %in% c(as.character(co[1,elem]),as.character(co[2,elem])),
                       factors %in% c(as.character(co[1,elem]),as.character(co[2,elem]))]
       }
