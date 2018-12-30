@@ -9,7 +9,7 @@ This is a wrapper function for multilevel pairwise comparison using adonis (~Per
 			The function returns adjusted p-values using p.adjust(). It does not accept interaction between factors neither strata.
 
 # pairwise.adonis2
-This function accept a model formula like in adonis from vegan. You can use interaction between factors and also strata. For pairwise comparison,a list of unique pairwise combination of factors is produced, then for each pairwise combination following objects are reduced accordingly to include only cases of the pair:
+This function accept a model formula like in adonis from vegan. You can use interaction between factors and also strata. For pairwise comparison a list of unique pairwise combination of factors is produced, then for each pair following objects are reduced accordingly to include only the subset of cases belonging to the pair:
 
 - the left hand side of the formula (dissimilarity matrix or community matrix)
 
@@ -21,12 +21,6 @@ The reduced data are passed to adonis and the summary of the anova table for eac
 
 
 _________________________________________________________________________________________________
-
-## Download
-
-My recommendation is to install directly from github 
-
-You can also download the folder pairwiseAdonis and build from scratch if you experience problems with R versions
 
 ## INSTALLATION
 ### For linux
@@ -62,10 +56,15 @@ ____________________________________
 library(pairwiseAdonis)
 data(iris)
 pairwise.adonis(iris[,1:4],iris$Species)
+
+# For strata, extract factors into a new data.frame
+fac <- data.frame(Species=iris$Species, Season = rep( c('winter','summer'),75))
+pairwise.adonis2(dist(iris[,1:4])~Species/Season,data=fac,strata='Season')
 ```
 
 for more examples see also
 ```?pairwise.adonis()```
+```?pairwise.adonis2()```
 _____________________________________________
 ## Citation
 
