@@ -7,21 +7,21 @@
 pairwise.adonis2(x, data, strata = NULL, ...)
 }
 \arguments{
-\item{x}{Model formula. The LHS is either community matrix or dissimilarity matrix (eg. from vegdist or dist)
-See adonis() for details. The RHS are factors that nmust be column names of a data.frame specified with argument data.}
+\item{x}{Model formula. The LHS is either community matrix or dissimilarity matrix (eg. from vegdist or dist).
+See ?adonis() for details. The RHS are factor(s) that nmust be column name(s) of a data frame specified with argument data.}
 
-\item{data}{The data frame of indipendent varibles having as column names the factors specified in formula.}
+\item{data}{The data frame of independent variables having as column names the factors specified in formula.}
 
 \item{strata}{String. The name of the column with factors to be used as strata.}
 
 \item{(...)}{Any other parameter passed to adonis}
 }
 \value{
-List. Elements are the summary returned by adonis for each unique pairwise combination of factors.
+List. The parent call, the anova table of the full model and for each unique pairwise combination of factors the anova table.
 }
 \description{
 This is a wrapper function for multilevel pairwise comparison
-using adonis() from package 'vegan'. The function accepts interaction between factors and strata.
+using adonis() from package 'vegan'. The function accepts interactions between factors and strata.
 }
 \examples{
 data(iris)

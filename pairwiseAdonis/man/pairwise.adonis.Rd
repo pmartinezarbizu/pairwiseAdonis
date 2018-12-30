@@ -24,7 +24,7 @@ default is 'bonferroni'.}
 \item{reduce}{String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like  reduce = 'setosa|versicolor'}
 }
 \value{
-Table with the pairwise factors, F-values, R^2, p.value and adjusted p.value.
+Table with the pairwise factors, Df, SumsOfSqs, F-values, R^2, p.value and adjusted p.value.
 }
 \description{
 This is a wrapper function for multilevel pairwise comparison
