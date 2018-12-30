@@ -1,5 +1,5 @@
 # pairwiseAdonis
-# version V0.3 include 2 functions
+# version 0.3 includes 2 functions
 pairwise.adonis
 
 pairwise.adonis2
