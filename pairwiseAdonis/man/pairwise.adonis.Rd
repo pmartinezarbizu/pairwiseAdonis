@@ -4,7 +4,7 @@
 \alias{pairwise.adonis}
 \title{Pairwise multilevel comparison using adonis}
 \usage{
-pairwise.adonis(x, factors, stratum = NULL, sim.function = "vegdist",
+pairwise.adonis(x, factors, sim.function = "vegdist",
   sim.method = "bray", p.adjust.m = "bonferroni", reduce = NULL,
   perm = 999)
 }
@@ -12,8 +12,6 @@ pairwise.adonis(x, factors, stratum = NULL, sim.function = "vegdist",
 \item{x}{Data frame (the community table), or "dist" object (user-supplied distance matrix).}
 
 \item{factors}{Vector (a column or vector with the levels to be compared pairwise).}
-
-\item{stratum}{Vector (groups (strata) within which to constrain permutations in adonis() ).}
 
 \item{sim.function}{Function used to calculate the similarity matrix,
 one of 'daisy' or 'vegdist' default is 'vegdist'. Ignored if x is a distance matrix.}
@@ -56,13 +54,6 @@ pairwise.adonis(iris[,1:4],iris$Species, reduce='setosa')
 #for more than one factor separate by pipes
 pairwise.adonis(iris[,1:4],iris$Species, reduce='setosa|versicolor')
 
-#Strata are not suported as argument, but you can merge the column with factor to the column with strata and select the desidered strata with 'reduce'
-#create strata
-strata <- rep(c('summer','winter'),75)
-pairwise.adonis(iris[,1:4],paste(iris$Species,strata),reduce='summer')
-
-#if you only want comparison within one stratum you need to reduce your matrix like this
-pairwise.adonis(iris[strata=='summer',1:4],iris$Species[strata=='summer'])
 
 }
 \author{

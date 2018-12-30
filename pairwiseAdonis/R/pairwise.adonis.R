@@ -7,8 +7,6 @@
 #'
 #'@param factors Vector (a column or vector with the levels to be compared pairwise).
 #'
-#'@param stratum Vector (groups (strata) within which to constrain permutations in adonis() ).
-#'
 #'@param sim.function Function used to calculate the similarity matrix,
 #' one of 'daisy' or 'vegdist' default is 'vegdist'. Ignored if x is a distance matrix.
 #'
@@ -47,13 +45,6 @@
 #'#for more than one factor separate by pipes
 #'pairwise.adonis(iris[,1:4],iris$Species, reduce='setosa|versicolor')
 #' 
-#'#Strata are not suported as argument, but you can merge the column with factor to the column with strata and select the desidered strata with 'reduce'
-#'#create strata
-#'strata <- rep(c('summer','winter'),75)
-#'pairwise.adonis(iris[,1:4],paste(iris$Species,strata),reduce='summer')
-#'
-#'#if you only want comparison within one stratum you need to reduce your matrix like this
-#'pairwise.adonis(iris[strata=='summer',1:4],iris$Species[strata=='summer'])
 #'
 #'@export pairwise.adonis
 #'@importFrom stats p.adjust
@@ -63,11 +54,13 @@
 
 
 
-pairwise.adonis <- function(x,factors,stratum = NULL, sim.function = 'vegdist', sim.method = 'bray', p.adjust.m ='bonferroni',reduce=NULL,perm=999)
+pairwise.adonis <- function(x,factors, sim.function = 'vegdist', sim.method = 'bray', p.adjust.m ='bonferroni',reduce=NULL,perm=999)
 {
   
   co <- combn(unique(as.character(factors)),2)
   pairs <- c()
+  Df <- c()
+  SumsOfSqs <- c()
   F.Model <- c()
   R2 <- c()
   p.value <- c()
@@ -87,10 +80,11 @@ pairwise.adonis <- function(x,factors,stratum = NULL, sim.function = 'vegdist', 
     )
     
     ad <- adonis(x1 ~ factors[factors %in% c(co[1,elem],co[2,elem])],
-                 strata = stratum[factors %in% c(co[1,elem],co[2,elem])],
                  permutations = perm);
     pairs <- c(pairs,paste(co[1,elem],'vs',co[2,elem]));
-    F.Model <- c(F.Model,ad$aov.tab[1,4]);
+    Df <- c(Df,ad$aov.tab[1,1])
+	SumsOfSqs <- c(SumsOfSqs, ad$aov.tab[1,2])
+	F.Model <- c(F.Model,ad$aov.tab[1,4]);
     R2 <- c(R2,ad$aov.tab[1,5]);
     p.value <- c(p.value,ad$aov.tab[1,6])
   }
@@ -101,7 +95,7 @@ pairwise.adonis <- function(x,factors,stratum = NULL, sim.function = 'vegdist', 
   sig[p.adjusted <= 0.01] <-'*'
   sig[p.adjusted <= 0.001] <-'**'
   sig[p.adjusted <= 0.0001] <-'***'
-  pairw.res <- data.frame(pairs,F.Model,R2,p.value,p.adjusted,sig)
+  pairw.res <- data.frame(pairs,Df,SumsOfSqs,F.Model,R2,p.value,p.adjusted,sig)
   
   if(!is.null(reduce)){
     pairw.res <- subset (pairw.res, grepl(reduce,pairs))
@@ -112,7 +106,7 @@ pairwise.adonis <- function(x,factors,stratum = NULL, sim.function = 'vegdist', 
     sig[pairw.res$p.adjusted <= 0.01] <-'*'
     sig[pairw.res$p.adjusted <= 0.001] <-'**'
     sig[pairw.res$p.adjusted <= 0.0001] <-'***'
-    pairw.res <- data.frame(pairw.res[,1:5],sig)
+    pairw.res <- data.frame(pairw.res[,1:7],sig)
   }
   class(pairw.res) <- c("pwadonis", "data.frame")
   return(pairw.res)
