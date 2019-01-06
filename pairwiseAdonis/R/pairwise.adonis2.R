@@ -67,8 +67,11 @@ fostri <- as.character(x)
 	res['parent_call'] <- list(paste(fostri[2],fostri[1],fostri[3],', strata =',ststri))
 
 #calculate full model
-	ad <- adonis(x, data=data, strata= data[,strata], ... )  
-
+	#calculate adonis 
+	if(is.null(strata)){
+	ad <- adonis(x,data=data, ... )
+	}else{ad <- adonis(x,data=data, strata = data[,strata], ... )}
+	
 #add full model to res 
 	res['full_model'] <- ad[1]
 
