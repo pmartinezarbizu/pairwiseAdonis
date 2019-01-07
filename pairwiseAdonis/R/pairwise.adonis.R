@@ -102,10 +102,10 @@ pairwise.adonis <- function(x,factors, sim.function = 'vegdist', sim.method = 'b
     pairw.res$p.adjusted <- p.adjust(pairw.res$p.value,method=p.adjust.m)
     
     sig = c(rep('',length(pairw.res$p.adjusted)))
-    sig[pairw.res$p.adjusted <= 0.05] <-'.'
-    sig[pairw.res$p.adjusted <= 0.01] <-'*'
-    sig[pairw.res$p.adjusted <= 0.001] <-'**'
-    sig[pairw.res$p.adjusted <= 0.0001] <-'***'
+ 	sig[pairw.res$p.adjusted <= 0.1] <-'.'
+	sig[pairw.res$p.adjusted <= 0.05] <-'*'
+	sig[pairw.res$p.adjusted <= 0.01] <-'**'
+	sig[pairw.res$p.adjusted <= 0.001] <-'***'
     pairw.res <- data.frame(pairw.res[,1:7],sig)
   }
   class(pairw.res) <- c("pwadonis", "data.frame")

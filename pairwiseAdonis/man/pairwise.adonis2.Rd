@@ -8,34 +8,45 @@ pairwise.adonis2(x, data, strata = NULL, ...)
 }
 \arguments{
 \item{x}{Model formula. The LHS is either community matrix or dissimilarity matrix (eg. from vegdist or dist).
-See ?adonis() for details. The RHS are factor(s) that nmust be column name(s) of a data frame specified with argument data.}
+See ?adonis2() for details. The RHS are factor(s) that must be column name(s) of a data frame specified with argument data.}
 
 \item{data}{The data frame of independent variables having as column names the factors specified in formula.}
 
 \item{strata}{String. The name of the column with factors to be used as strata.}
 
-\item{(...)}{Any other parameter passed to adonis}
+\item{(...)}{Any other parameter passed to adonis2}
 }
 \value{
 List. The parent call, the anova table of the full model and for each unique pairwise combination of factors the anova table.
 }
 \description{
 This is a wrapper function for multilevel pairwise comparison
-using adonis() from package 'vegan'. The function accepts interactions between factors and strata.
+using adonis2() from package 'vegan'. The function accepts interactions between factors and strata.
 }
 \examples{
 data(iris)
-pairwise.adonis2(iris[,1:4]~Species,data=iris)
+pw <- pairwise.adonis2(iris[,1:4]~Species,data=iris)
+summary(pw)
 
 # For strata, extract factors into a new data.frame
 fac <- data.frame(Species=iris$Species,
 	Season = rep( c('winter','summer'),75))
 
-pairwise.adonis2(dist(iris[,1:4])~Species/Season,data=fac,strata='Season')
+pw <- pairwise.adonis2(dist(iris[,1:4])~Species/Season,data=fac,strata='Season')
+summary(pw)
 
 # Note: do not define strata indexing a column e.g. strata = iris[,5]. This will raise an error.
 # Use the name of the column as string as example above.
 
+data(dune)
+data(dune.env) 
+
+pw <- pairwise.adonis2(dune ~ Management*A1, data = dune.env)
+summary(pw)
+
+}
+\seealso{
+\code{\link{adonis2}}
 }
 \author{
 Pedro Martinez Arbizu

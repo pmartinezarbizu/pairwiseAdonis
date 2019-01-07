@@ -2,6 +2,7 @@
 
 export(pairwise.adonis)
 export(pairwise.adonis2)
+export(summary.pwadonis2)
 importFrom(cluster,daisy)
 importFrom(stats,p.adjust)
 importFrom(utils,combn)
