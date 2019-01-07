@@ -69,8 +69,8 @@ fostri <- as.character(x)
 #calculate full model
 	#calculate adonis 
 	if(is.null(strata)){
-	ad <- adonis(x,data=data, ... )
-	}else{ad <- adonis(x,data=data, strata = data[,strata], ... )}
+	ad <- adonis2(x,data=data, ... )
+	}else{ad <- adonis2(x,data=data, strata = data[,strata], ... )}
 	
 #add full model to res 
 	res['full_model'] <- ad[1]
@@ -99,8 +99,8 @@ fostri <- as.character(x)
 					
 #pass new formula to adonis
 	if(is.null(strata)){
-	ad <- adonis(xnew,data=mdat1, ... )
-	}else{ad <- adonis(xnew,data=mdat1,strata= mdat1[,strata], ... )}
+	ad <- adonis2(xnew,data=mdat1, ... )
+	}else{ad <- adonis2(xnew,data=mdat1,strata= mdat1[,strata], ... )}
 	
 	res[nameres[elem+2]] <- ad[1]
 	}
