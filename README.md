@@ -8,6 +8,10 @@ pairwise.adonis2
 This is a wrapper function for multilevel pairwise comparison using adonis (~Permanova) from package 'vegan'. The function returns adjusted p-values using p.adjust(). It does not accept interaction between factors neither strata.
 
 # pairwise.adonis2
+
+NOTE: This is still a raw developing version -- results may not be rigth.
+I would appreciate feed back.
+
 This function accepts a model formula like in adonis from vegan. You can use interactions between factors and define strata to constrain permutations. For pairwise comparison a list of unique pairwise combination of factors is produced. Then for each pair, following objects are reduced accordingly to include only the subset of cases belonging to the pair:
 
 - the left hand side of the formula (dissimilarity matrix or community matrix)
