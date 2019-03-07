@@ -6,7 +6,7 @@
 \usage{
 pairwise.adonis(x, factors, sim.function = "vegdist",
   sim.method = "bray", p.adjust.m = "bonferroni", reduce = NULL,
-  perm = 999)
+  perm = 999, binary = FALSE)
 }
 \arguments{
 \item{x}{Data frame (the community table), or "dist" object (user-supplied distance matrix).}
@@ -22,6 +22,10 @@ one of 'daisy' or 'vegdist' default is 'vegdist'. Ignored if x is a distance mat
 default is 'bonferroni'.}
 
 \item{reduce}{String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like  reduce = 'setosa|versicolor'}
+
+\item{perm}{Number of permutations. Default = 999}
+
+\item{binary}{Passed to vegdist(). Should community data be converted to presence/absence prior to distance matrix calculation? default = FALSE}
 }
 \value{
 Table with the pairwise factors, Df, SumsOfSqs, F-values, R^2, p.value and adjusted p.value.

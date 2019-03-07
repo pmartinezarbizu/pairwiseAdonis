@@ -16,6 +16,8 @@
 #' default is 'bonferroni'.
 #'
 #'@param reduce String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like  reduce = 'setosa|versicolor'
+#' @param perm Number of permutations. Default = 999
+#' @param binary Passed to vegdist(). Should community data be converted to presence/absence prior to distance matrix calculation? default = FALSE
 #'
 #'@return Table with the pairwise factors, Df, SumsOfSqs, F-values, R^2, p.value and adjusted p.value.
 #'
@@ -54,7 +56,7 @@
 
 
 
-pairwise.adonis <- function(x,factors, sim.function = 'vegdist', sim.method = 'bray', p.adjust.m ='bonferroni',reduce=NULL,perm=999)
+pairwise.adonis <- function(x,factors, sim.function = 'vegdist', sim.method = 'bray', p.adjust.m ='bonferroni',reduce=NULL,perm=999, binary=FALSE)
 {
   
   co <- combn(unique(as.character(factors)),2)
@@ -76,7 +78,7 @@ pairwise.adonis <- function(x,factors, sim.function = 'vegdist', sim.method = 'b
       if (sim.function == 'daisy'){
             x1 = daisy(x[factors %in% c(co[1,elem],co[2,elem]),],metric=sim.method)
         } 
-      else{x1 = vegdist(x[factors %in% c(co[1,elem],co[2,elem]),],method=sim.method)}
+      else{x1 = vegdist(x[factors %in% c(co[1,elem],co[2,elem]),],method=sim.method, binary=binary)}
     )
     
     ad <- adonis(x1 ~ factors[factors %in% c(co[1,elem],co[2,elem])],
