@@ -4,9 +4,15 @@
 \alias{pairwise.adonis}
 \title{Pairwise multilevel comparison using adonis}
 \usage{
-pairwise.adonis(x, factors, sim.function = "vegdist",
-  sim.method = "bray", p.adjust.m = "bonferroni", reduce = NULL,
-  perm = 999)
+pairwise.adonis(
+  x,
+  factors,
+  sim.function = "vegdist",
+  sim.method = "bray",
+  p.adjust.m = "bonferroni",
+  reduce = NULL,
+  perm = 999
+)
 }
 \arguments{
 \item{x}{Data frame (the community table), or "dist" object (user-supplied distance matrix).}

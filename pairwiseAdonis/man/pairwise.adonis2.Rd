@@ -27,14 +27,30 @@ using adonis() from package 'vegan'. The function accepts interaction between fa
 data(iris)
 pairwise.adonis2(iris[,1:4]~Species,data=iris)
 
-# For strata, extract factors into a new data.frame
-fac <- data.frame(Species=iris$Species,
-	Season = rep( c('winter','summer'),75))
+#For strata (blocks), Jari Oksanen recommends in the help of adonis2 to define the 
+#permutation matrix outside the adonis2 call
+#In this example I have adapted the adonis2 example to have 3 factors in NO3
 
-pairwise.adonis2(dist(iris[,1:4])~Species/Season,data=fac,strata='Season')
+dat <- expand.grid(rep=gl(2,1), NO3=factor(c(0,10,30)),field=gl(3,1) )
+Agropyron <- with(dat, as.numeric(field) + as.numeric(NO3)+2) +rnorm(18)/2
+Schizachyrium <- with(dat, as.numeric(field) - as.numeric(NO3)+2) +rnorm(18)/2
+Y <- data.frame(Agropyron, Schizachyrium)
+perm <- how(nperm = 199)
+setBlocks(perm) <- with(dat, field)
+adonis2(Y ~ NO3, data = dat, permutations = perm)
 
-# Note: do not define strata indexing a column e.g. strata = iris[,5]. This will raise an error.
-# Use the name of the column as string as example above.
+
+# pairwise comparison
+pairwise.adonis2(Y ~ NO3, data = dat, strata = dat$fields)
+
+#this will give same results a doing adonis2 pairwise one by one
+
+#for factors '0' and '10'
+dat2 <- dat[dat$NO3 \%in\% c('0','10'),]
+Y2 <- Y[dat$NO3 \%in\% c('0','10'),]
+setBlocks(perm) <- with(dat2, field)
+adonis2(Y2 ~ NO3, data = dat2, permutations = perm)
+# and so on...
 
 }
 \author{

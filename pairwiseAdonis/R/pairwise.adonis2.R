@@ -32,10 +32,8 @@
 #' setBlocks(perm) <- with(dat, field)
 #' adonis2(Y ~ NO3, data = dat, permutations = perm)
 #'
-#' # now the pairwise call
-#' pairwise.adonis2(Y ~ NO3, data = dat, permutations = perm)
 #'
-#' # alternatively you can use
+#' # pairwise comparison
 #' pairwise.adonis2(Y ~ NO3, data = dat, strata = dat$fields)
 #'
 #' #this will give same results a doing adonis2 pairwise one by one
