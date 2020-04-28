@@ -8,9 +8,13 @@ pairwise.adonis2
 This is a wrapper function for multilevel pairwise comparison using adonis (~Permanova) from package 'vegan'. The function returns adjusted p-values using p.adjust(). It does not accept interaction between factors neither strata.
 
 # pairwise.adonis2
-
-NOTE: This is still a raw developing version -- results may not be rigth.
+This fuction accepts strata
+NOTE: This is still a raw developing version -- results using interaction may not be rigth. Please validate.
 I would appreciate feed back.
+
+update 28 April 2020:
+Function now adapts the permutation matrix for each combination of factors before applying adonis.
+The p-value when using strata (block) looks correct now.
 
 This function accepts a model formula like in adonis from vegan. You can use interactions between factors and define strata to constrain permutations. For pairwise comparison a list of unique pairwise combination of factors is produced. Then for each pair, following objects are reduced accordingly to include only the subset of cases belonging to the pair:
 
@@ -60,9 +64,13 @@ library(pairwiseAdonis)
 data(iris)
 pairwise.adonis(iris[,1:4],iris$Species)
 
-# For strata, extract factors into a new data.frame
-fac <- data.frame(Species=iris$Species, Season = rep( c('winter','summer'),75))
-pairwise.adonis2(dist(iris[,1:4])~Species/Season,data=fac,strata='Season')
+# For strata (blocks), following example of Jari Oksanen in adonis2. 
+dat <- expand.grid(rep=gl(2,1), NO3=factor(c(0,10,30)),field=gl(3,1) )
+Agropyron <- with(dat, as.numeric(field) + as.numeric(NO3)+2) +rnorm(18)/2
+Schizachyrium <- with(dat, as.numeric(field) - as.numeric(NO3)+2) +rnorm(18)/2
+Y <- data.frame(Agropyron, Schizachyrium)
+
+pairwise.adonis2(Y ~ NO3, data = dat, strata = 'field')
 ```
 
 for more examples see also
@@ -71,4 +79,4 @@ for more examples see also
 _____________________________________________
 ## Citation
 
-Martinez Arbizu, P. (2019). pairwiseAdonis: Pairwise multilevel comparison using adonis. R package version 0.3
+Martinez Arbizu, P. (2020). pairwiseAdonis: Pairwise multilevel comparison using adonis. R package version 0.4
