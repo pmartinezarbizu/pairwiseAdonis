@@ -36,7 +36,7 @@ ________________________________________________________________________________
 Note: I have experience myself an Error when installing from github.
 
 Error converted from warning ... (https://github.com/r-lib/remotes/issues/403)
-To avoid thi, load devtools and type first in your R session:
+To avoid this, load devtools and type first in your R session:
 
 ```Sys.setenv("R_REMOTES_NO_ERRORS_FROM_WARNINGS"=TRUE)```
 
