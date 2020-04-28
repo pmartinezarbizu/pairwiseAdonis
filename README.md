@@ -9,12 +9,13 @@ This is a wrapper function for multilevel pairwise comparison using adonis (~Per
 
 # pairwise.adonis2
 This fuction accepts strata
-NOTE: This is still a raw developing version -- results using interaction may not be rigth. Please validate.
+
+NOTE: This is still a developing version -- results using interactions may not be rigth. Please validate.
 I would appreciate feed back.
 
 update 28 April 2020:
 Function now adapts the permutation matrix for each combination of factors before applying adonis.
-The p-value when using strata (block) looks correct now.
+The p-value when using strata (block) looks correct now. Check syntax in example below.
 
 This function accepts a model formula like in adonis from vegan. You can use interactions between factors and define strata to constrain permutations. For pairwise comparison a list of unique pairwise combination of factors is produced. Then for each pair, following objects are reduced accordingly to include only the subset of cases belonging to the pair:
 
