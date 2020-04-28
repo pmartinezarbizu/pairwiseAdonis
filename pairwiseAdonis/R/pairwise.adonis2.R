@@ -34,7 +34,7 @@
 #'
 #'
 #' # pairwise comparison
-#' pairwise.adonis2(Y ~ NO3, data = dat, strata = dat$fields)
+#' pairwise.adonis2(Y ~ NO3, data = dat, strata = 'field') #notice the apostrophes in strata = 'field' !
 #'
 #' #this will give same results a doing adonis2 pairwise one by one
 #'
@@ -50,7 +50,7 @@
 #'@importFrom vegan adonis vegdist
 
 
-pairwise.adonis2 <- function(x, data, strata = NULL, ... ) {
+pairwise.adonis2 <- function(x, data, strata = NULL, nperm=999, ... ) {
 
 #describe parent call function 
 ststri <- ifelse(is.null(strata),'Null',strata)
@@ -107,7 +107,10 @@ res['parent_call'] <- list(paste(fostri[2],fostri[1],fostri[3],', strata =',stst
 #pass new formula to adonis
 	if(is.null(strata)){
 	ad <- adonis(xnew,data=mdat1, ... )
-	}else{ad <- adonis(xnew,data=mdat1,strata= mdat1[,strata], ... )}
+	}else{
+	perm <- how(nperm = nperm)
+    setBlocks(perm) <- with(mdat1, mdat1[,ststri])
+    ad <- adonis(xnew,data=mdat1,permutations = perm, ... )}
 	
   res[nameres[elem+1]] <- ad[1]
   }
