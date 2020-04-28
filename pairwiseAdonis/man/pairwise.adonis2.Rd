@@ -4,7 +4,7 @@
 \alias{pairwise.adonis2}
 \title{Pairwise multilevel comparison using adonis accepting strata}
 \usage{
-pairwise.adonis2(x, data, strata = NULL, ...)
+pairwise.adonis2(x, data, strata = NULL, nperm = 999, ...)
 }
 \arguments{
 \item{x}{Model formula. The LHS is either community matrix or dissimilarity matrix (eg. from vegdist or dist)
@@ -41,7 +41,7 @@ adonis2(Y ~ NO3, data = dat, permutations = perm)
 
 
 # pairwise comparison
-pairwise.adonis2(Y ~ NO3, data = dat, strata = dat$fields)
+pairwise.adonis2(Y ~ NO3, data = dat, strata = 'field') #notice the apostrophes in strata = 'field' !
 
 #this will give same results a doing adonis2 pairwise one by one
 
