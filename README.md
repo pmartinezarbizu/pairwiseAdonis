@@ -8,9 +8,9 @@ pairwise.adonis2
 This is a wrapper function for multilevel pairwise comparison using adonis (~Permanova) from package 'vegan'. The function returns adjusted p-values using p.adjust(). It does not accept interaction between factors neither strata.
 
 # pairwise.adonis2
-This fuction accepts strata
+This function accepts strata
 
-NOTE: This is still a developing version -- results using interactions may not be rigth. Please validate.
+NOTE: This is still a developing version -- results using interactions may not be right. Please validate.
 I would appreciate feed back.
 
 update 28 April 2020:
