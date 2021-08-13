@@ -79,7 +79,9 @@ pairwise.adonis <- function(x,factors, sim.function = 'vegdist', sim.method = 'b
       else{x1 = vegdist(x[factors %in% c(co[1,elem],co[2,elem]),],method=sim.method)}
     )
     
-    ad <- adonis2(x1 ~ factors[factors %in% c(co[1,elem],co[2,elem])],
+    x2 = data.frame(Fac = factors[factors %in% c(co[1,elem],co[2,elem])])
+    
+    ad <- adonis2(x1 ~ Fac, data = x2,
                  permutations = perm);
     pairs <- c(pairs,paste(co[1,elem],'vs',co[2,elem]));
     Df <- c(Df,ad$Df[1])
