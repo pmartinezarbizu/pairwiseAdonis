@@ -1,16 +1,16 @@
 # pairwiseAdonis
-# version 0.3 includes 2 functions
+# version 0.4 includes 2 functions
 pairwise.adonis
 
 pairwise.adonis2
 
 # pairwise.adonis
-This is a wrapper function for multilevel pairwise comparison using adonis (~Permanova) from package 'vegan'. The function returns adjusted p-values using p.adjust(). It does not accept interaction between factors neither strata.
+This is a wrapper function for multilevel pairwise comparison using adonis2 (~Permanova) from package 'vegan'. The function returns adjusted p-values using p.adjust(). It does not accept interaction between factors neither strata.
 
 # pairwise.adonis2
 This function accepts strata
 
-NOTE: This is still a developing version -- results using interactions may not be right. Please validate.
+NOTE: This is still a developing version -- Please validate your results.
 I would appreciate feed back.
 
 update 28 April 2020:
@@ -26,6 +26,12 @@ This function accepts a model formula like in adonis from vegan. You can use int
 - the strata if used.
 
 The reduced data are passed to adonis and the summary of the anova table for each pair is saved in a list, together with the anova table of the full model and the original 'parent call'.
+
+update 30.08.21
+Both functions now use adonis2 instead of adonis. This will solve some problems when loading Desctools. The functions shoudl now work with Phyloseq objects.
+
+Thanks to @lkoest12 for raising this and @JFMSilva for the solution 
+https://github.com/joey711/phyloseq/issues/1457#issuecomment-880093708
 
 
 _________________________________________________________________________________________________
