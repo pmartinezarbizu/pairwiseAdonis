@@ -80,7 +80,7 @@ fostri <- as.character(x)
   names(res) <- nameres
 
 #add parent call to res 
-res['parent_call'] <- list(paste(fostri[2],fostri[1],fostri[3],', strata =',ststri))
+res['parent_call'] <- list(paste(fostri[2],fostri[1],fostri[3],', strata =',ststri, ', permutations',nperm ))
 
   
 #start iteration trough pairwise combination of factors  
@@ -106,13 +106,13 @@ res['parent_call'] <- list(paste(fostri[2],fostri[1],fostri[3],', strata =',stst
 					
 #pass new formula to adonis
 	if(is.null(strata)){
-	ad <- adonis(xnew,data=mdat1, ... )
+	ad <- adonis2(xnew,data=mdat1, ... )
 	}else{
 	perm <- how(nperm = nperm)
     setBlocks(perm) <- with(mdat1, mdat1[,ststri])
-    ad <- adonis(xnew,data=mdat1,permutations = perm, ... )}
+    ad <- adonis2(xnew,data=mdat1,permutations = perm, ... )}
 	
-  res[nameres[elem+1]] <- ad[1]
+  res[nameres[elem+1]] <- list(ad[1:5])
   }
   #names(res) <- names  
   class(res) <- c("pwadstrata", "list")
@@ -120,5 +120,12 @@ res['parent_call'] <- list(paste(fostri[2],fostri[1],fostri[3],', strata =',stst
 } 
 
 
-
-
+### Method summary
+summary.pwadstrata = function(object, ...) {
+  cat("Result of pairwise.adonis2:\n")
+  cat("\n")
+  print(object[1], ...)
+  cat("\n")
+  
+  cat("Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n")
+}
