@@ -28,7 +28,7 @@ This function accepts a model formula like in adonis from vegan. You can use int
 The reduced data are passed to adonis and the summary of the anova table for each pair is saved in a list, together with the anova table of the full model and the original 'parent call'.
 
 update 30.08.21
-Both functions now use adonis2 instead of adonis. This will solve some problems when loading Desctools. The functions shoudl now work with Phyloseq objects.
+Both functions now use adonis2 instead of adonis. This will solve some problems when loading Desctools. The functions should now work with Phyloseq objects.
 
 Thanks to @lkoest12 for raising this and @JFMSilva for the solution 
 https://github.com/joey711/phyloseq/issues/1457#issuecomment-880093708
