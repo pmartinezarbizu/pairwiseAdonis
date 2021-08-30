@@ -86,7 +86,7 @@ Agropyron <- with(dat, as.numeric(field) + as.numeric(NO3)+2) +rnorm(18)/2
 Schizachyrium <- with(dat, as.numeric(field) - as.numeric(NO3)+2) +rnorm(18)/2
 Y <- data.frame(Agropyron, Schizachyrium)
 
-pairwise.adonis2(Y ~ NO3, data = dat, strata = 'field')
+pairwise.adonis2(Y ~ NO3/field, data = dat, strata = 'field')
 ```
 
 for more examples see also
