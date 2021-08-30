@@ -79,14 +79,16 @@ pairwise.adonis <- function(x,factors, sim.function = 'vegdist', sim.method = 'b
       else{x1 = vegdist(x[factors %in% c(co[1,elem],co[2,elem]),],method=sim.method)}
     )
     
-    ad <- adonis(x1 ~ factors[factors %in% c(co[1,elem],co[2,elem])],
+    x2 = data.frame(Fac = factors[factors %in% c(co[1,elem],co[2,elem])])
+    
+    ad <- adonis2(x1 ~ Fac, data = x2,
                  permutations = perm);
     pairs <- c(pairs,paste(co[1,elem],'vs',co[2,elem]));
-    Df <- c(Df,ad$aov.tab[1,1])
-	SumsOfSqs <- c(SumsOfSqs, ad$aov.tab[1,2])
-	F.Model <- c(F.Model,ad$aov.tab[1,4]);
-    R2 <- c(R2,ad$aov.tab[1,5]);
-    p.value <- c(p.value,ad$aov.tab[1,6])
+    Df <- c(Df,ad$Df[1])
+	SumsOfSqs <- c(SumsOfSqs,ad$SumOfSqs[1])
+	F.Model <- c(F.Model,ad$F[1]);
+    R2 <- c(R2,ad$R2[1]);
+    p.value <- c(p.value,ad$`Pr(>F)`[1])
   }
   p.adjusted <- p.adjust(p.value,method=p.adjust.m)
   
