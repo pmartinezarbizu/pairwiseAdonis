@@ -60,8 +60,7 @@ fostri <- as.character(x)
 #copy model formula
    x1 <- x
 # extract left hand side of formula
-  YVAR <- x1[[2]]
-  lhs <- eval(YVAR, environment(x1), globalenv())
+  lhs <- eval(x1[[2]], environment(x1), globalenv())
   environment(x1) <- environment()
 # extract factors on right hand side of formula 
   rhs <- x1[[3]]
