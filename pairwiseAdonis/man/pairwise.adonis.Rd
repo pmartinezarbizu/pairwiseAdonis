@@ -28,6 +28,8 @@ one of 'daisy' or 'vegdist' default is 'vegdist'. Ignored if x is a distance mat
 default is 'bonferroni'.}
 
 \item{reduce}{String. Restrict comparison to pairs including these factors. If more than one factor, separate by pipes like  reduce = 'setosa|versicolor'}
+
+\item{perm}{The number of permutations.}
 }
 \value{
 Table with the pairwise factors, Df, SumsOfSqs, F-values, R^2, p.value and adjusted p.value.

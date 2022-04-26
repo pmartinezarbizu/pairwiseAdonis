@@ -14,7 +14,9 @@ See adonis() for details. The RHS are factors that nmust be column names of a da
 
 \item{strata}{String. The name of the column with factors to be used as strata.}
 
-\item{(...)}{Any other parameter passed to adonis}
+\item{nperm}{The number of permutations.}
+
+\item{...}{Any other parameter passed to adonis}
 }
 \value{
 List. Elements are the summary returned by adonis for each unique pairwise combination of factors.
@@ -27,7 +29,7 @@ using adonis() from package 'vegan'. The function accepts interaction between fa
 data(iris)
 pairwise.adonis2(iris[,1:4]~Species,data=iris)
 
-#For strata (blocks), Jari Oksanen recommends in the help of adonis2 to define the 
+#For strata (blocks), Jari Oksanen recommends in the help of adonis2 to define the
 #permutation matrix outside the adonis2 call
 #In this example I have adapted the adonis2 example to have 3 factors in NO3
 
@@ -41,7 +43,8 @@ adonis2(Y ~ NO3, data = dat, permutations = perm)
 
 
 # pairwise comparison
-pairwise.adonis2(Y ~ NO3, data = dat, strata = 'field') #notice the apostrophes in strata = 'field' !
+pairwise.adonis2(Y ~ NO3, data = dat, strata = 'field')
+#notice the apostrophes in strata = 'field' !
 
 #this will give same results a doing adonis2 pairwise one by one
 
