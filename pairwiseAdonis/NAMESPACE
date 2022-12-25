@@ -2,8 +2,13 @@
 
 export(pairwise.adonis)
 export(pairwise.adonis2)
+import(permute)
 importFrom(cluster,daisy)
+importFrom(stats,as.dist)
+importFrom(stats,as.formula)
+importFrom(stats,model.frame)
 importFrom(stats,p.adjust)
 importFrom(utils,combn)
 importFrom(vegan,adonis)
+importFrom(vegan,adonis2)
 importFrom(vegan,vegdist)
