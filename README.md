@@ -33,18 +33,30 @@ Both functions now use adonis2 instead of adonis. This will solve some problems 
 Thanks to @lkoest12 for raising this and @JFMSilva for the solution 
 https://github.com/joey711/phyloseq/issues/1457#issuecomment-880093708
 
+
+
+
 Here a sample code provided by Andrea Pietruska for phyloseq:
 
 For Jaccard and Bray Curtis:
-ps_tr <- microbiome::transform(phyloseq_object, "clr")
-ps_dist_matrix <- phyloseq::distance(phyloseq_object, method ="jaccard")
-vegan::adonis2(ps_dist_matrix ~ phyloseq::sample_data(ps_tr)$treatment)
-pairwise.adonis(ps_dist_matrix, phyloseq::sample_data(ps_tr)$treatment)
+
+```ps_tr <- microbiome::transform(phyloseq_object, "clr")```
+
+```ps_dist_matrix <- phyloseq::distance(phyloseq_object, method ="jaccard")```
+
+```vegan::adonis2(ps_dist_matrix ~ phyloseq::sample_data(ps_tr)$treatment)```
+
+```pairwise.adonis(ps_dist_matrix, phyloseq::sample_data(ps_tr)$treatment)```
+
 
 For Unifrac:
-weighted_unifrac = UniFrac(physeq=phyloseq_object, weighted=T, normalized=T, parallel=T, fast=T)
-vegan::adonis2(weighted_unifrac ~ phyloseq::sample_data(ps_tr)$treatment)
-pairwise.adonis(weighted_unifrac, phyloseq::sample_data(ps_tr)$treatment)
+
+```weighted_unifrac = UniFrac(physeq=phyloseq_object, weighted=T, normalized=T, parallel=T, fast=T)```
+
+```vegan::adonis2(weighted_unifrac ~ phyloseq::sample_data(ps_tr)$treatment)```
+
+```pairwise.adonis(weighted_unifrac, phyloseq::sample_data(ps_tr)$treatment)```
+
 
 _________________________________________________________________________________________________
 
